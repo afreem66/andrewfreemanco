@@ -1,2 +1,5 @@
 <h3>What I am working on</h3>
+{{#each model as |project|}}
+  {{#link-to 'projects.show' project}}{{project.name}}{{/link-to}}
+{{/each}}
 {{outlet}}

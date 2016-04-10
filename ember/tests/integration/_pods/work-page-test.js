@@ -1,12 +1,47 @@
 import Ember from 'ember';
 import { module, test } from 'qunit';
+import Pretender from 'pretender';
 import startApp from '../../helpers/start-app';
 
-var App;
+let App, server;
 
-module('Integration - Work Page', {
+module('Integration - Projects Page', {
   beforeEach: function () {
     App = startApp();
+
+    const projects = [
+      {
+        id: 1,
+        name: 'taz',
+        description: 'EMR app to give patient more power over their information'
+      },
+      {
+        id: 2,
+        name: 'whats cooking?',
+        description: 'recipe finder for busy devs with shopping list funcitonality'
+      },
+      {
+        id: 3,
+        name: 'karma',
+        description: 'volunteer opportunity finder'
+      }
+    ];
+
+    server = new Pretender(function() {
+      this.get('/api/projects', function(request) {
+        return [200, {"Content-Type": "application/json"}, JSON.stringify({projects: projects})];
+      });
+
+      this.get('/api/projects/:id', function(request) {
+        let project = project.find(function(project) {
+          if (project.id === parseInt(request.params.id, 10)) {
+            return project;
+          }
+        });
+
+        return [200, {"Content-Type": "application/json"}, JSON.stringify({project: project})];
+      });
+    });
   },
   afterEach: function () {
     Ember.run(App, 'destroy');
@@ -21,3 +56,11 @@ test('Should navigate to the work page', function (assert) {
   });
 });
 
+test('Should list all projects', function(assert) {
+  visit('/').then(function() {
+    debugger;
+    assert.equal(find('a:contains("taz")').length, 1);
+    assert.equal(find('a:contains("whats cooking?")').length, 1);
+    assert.equal(find('a:contains("karma")').length, 1);
+  });
+});
