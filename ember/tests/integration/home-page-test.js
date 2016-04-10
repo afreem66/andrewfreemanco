@@ -26,20 +26,20 @@ test('Should be able to navigate back to the homepage from about', function (ass
     });
   });
 });
-//
-// test('Should be able to navigate back to the homepage from work', function (assert) {
-//   visit('/work').then(function () {
-//     click('a:contains("Home")').then(function () {
-//       assert.equal(find('h1#welcome').text().trim(), 'Welcome friend', 'Can navigate back to homepage from about');
-//     });
-//   });
-// });
-//
-// test('Should be able to navigate back to the homepage from thoughts', function (assert) {
-//   visit('/thoughts').then(function () {
-//     click('a:contains("Home")').then(function () {
-//       assert.equal(find('h1#welcome').text().trim(), 'Welcome friend', 'Can navigate back to homepage from thoughts');
-//     });
-//   });
-// });
-//
+
+test('Should be able to navigate back to the homepage from work', function (assert) {
+  visit('/work').then(function () {
+    click('a:contains("Home")').then(function () {
+      assert.equal(find('h1#welcome').text().trim(), 'Welcome friend', 'Can navigate back to homepage from about');
+    });
+  });
+});
+
+test('Should be able to navigate back to the homepage from thoughts', function (assert) {
+  visit('/thoughts').then(function () {
+    click('a:contains("Home")').then(function () {
+      assert.equal(find('h1#welcome').text().trim(), 'Welcome friend', 'Can navigate back to homepage from thoughts');
+    });
+  });
+});
+
