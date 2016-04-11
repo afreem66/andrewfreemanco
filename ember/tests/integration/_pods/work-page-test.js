@@ -18,7 +18,7 @@ module('Integration - Projects Page', {
       {
         id: 2,
         name: 'whats cooking?',
-        description: 'recipe finder for busy devs with shopping list funcitonality'
+        description: 'recipe finder for busy devs with shopping list functionality'
       },
       {
         id: 3,
@@ -28,12 +28,12 @@ module('Integration - Projects Page', {
     ];
 
     server = new Pretender(function() {
-      this.get('/api/projects', function(request) {
+      this.get('/api/projects', function() {
         return [200, {"Content-Type": "application/json"}, JSON.stringify({projects: projects})];
       });
 
       this.get('/api/projects/:id', function(request) {
-        let project = project.find(function(project) {
+        let project = projects.find(function(project) {
           if (project.id === parseInt(request.params.id, 10)) {
             return project;
           }
