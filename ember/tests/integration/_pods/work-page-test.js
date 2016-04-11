@@ -57,10 +57,23 @@ test('Should navigate to the work page', function (assert) {
 });
 
 test('Should list all projects', function(assert) {
-  visit('/').then(function() {
-    debugger;
+  visit('/work').then(function() {
     assert.equal(find('a:contains("taz")').length, 1);
     assert.equal(find('a:contains("whats cooking?")').length, 1);
     assert.equal(find('a:contains("karma")').length, 1);
+  });
+});
+
+test('Should be able to navigate to a project page', function(assert) {
+  visit('work').then(function() {
+    click('a:contains("taz")').then(function() {
+      assert.equal(find('.project-title').text().trim(), 'taz');
+    });
+  });
+});
+
+test('Should be able visit a project page', function(assert) {
+  visit('/work/1').then(function() {
+    assert.equal(find('.project-title').text().trim(), 'taz');
   });
 });
