@@ -1,5 +1,5 @@
 <h3>What I am working on</h3>
 {{#each model as |project|}}
-  {{#link-to 'projects.show' project}}{{project.name}}{{/link-to}}
+  {{~#link-to 'projects.show' project}} {{project.name}} - ({{project.tags.length}}) {{~/link-to}}
 {{/each}}
 {{outlet}}
