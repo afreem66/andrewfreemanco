@@ -1,2 +1,13 @@
 <h3>What I am thinking about these days</h3>
+<ul>
+  {{#each model as |thought|}}
+    <li>
+      {{#link-to 'thoughts.show' thought}}
+      <h4>{{thought.title}} <span>{{thought.postedDate}}</span></h4>
+      {{/link-to}}
+      <p>{{thought.body}}</p>
+      <span>- {{thought.author}}</span>
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}
