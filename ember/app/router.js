@@ -12,6 +12,7 @@ Router.map(function() {
   });
   this.route('thoughts', function() {
     this.route('show', {path: '/:thought_id'});
+    this.route('new');
   });
 });
 

@@ -1,0 +1,13 @@
+<form {{action 'create' on='submit'}}>
+  <h2>New Thought Creation Form</h2>
+  <div>
+    <label for="">Title</label>
+    {{input value=model.title}}
+  </div>
+  <div>
+    <label for="">Body</label>
+    {{textarea value=model.body cols='80' rows='6'}}
+  </div>
+  <button type="submit">Save</button>
+</form>
+{{outlet}}

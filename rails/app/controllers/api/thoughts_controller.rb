@@ -6,4 +6,11 @@ class Api::ThoughtsController < ApplicationController
   def show
     render json: Thought.find(params[:id])
   end
+
+  def create
+    @thought = Thought.new(params[:thought])
+    if @thought.save
+      render json: @post
+    end
+  end
 end
