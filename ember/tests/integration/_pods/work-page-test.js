@@ -82,7 +82,6 @@ test('Should navigate to the work page', function (assert) {
 
 test('Should list all projects and their tags', function(assert) {
   visit('/work').then(function() {
-    debugger;
     assert.equal(find('a:contains("taz - (0)")').length, 1);
     assert.equal(find('a:contains("whats cooking? - (2)")').length, 1);
     assert.equal(find('a:contains("karma - (1)")').length, 1);
