@@ -7,7 +7,11 @@ export default Ember.Route.extend({
 
   actions: {
     create () {
-      this.get('model').save().then(this.transitionTo('thoughts'));
+      this.get('currentModel').save().then(() => {
+       this.transitionTo('thoughts');
+      }).catch((res) => {
+        console.log(res);
+      });
     }
   }
 
