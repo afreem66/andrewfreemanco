@@ -10,7 +10,7 @@ class Api::ThoughtsController < ApplicationController
   def create
     @thought = Thought.new(params[:thought])
     if @thought.save
-      render json: @post
+      render json: @thought
     end
   end
 end
