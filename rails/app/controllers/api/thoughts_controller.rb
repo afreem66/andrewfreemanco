@@ -8,9 +8,15 @@ class Api::ThoughtsController < ApplicationController
   end
 
   def create
-    @thought = Thought.new(params[:thought])
+    @thought = Thought.new(thought_params)
     if @thought.save
       render json: @thought
     end
+  end
+
+  private
+
+  def thought_params
+    params
   end
 end
