@@ -1,0 +1,13 @@
+<h3>Post something new here</h3>
+<form {{action 'create' on='submit'}}>
+  <div>
+    <label for="">Title</label>
+    {{input value=model.title}}
+  </div>
+  <div>
+    <label for="">Body</label>
+    {{textarea value=model.body cols='80' rows='6'}}
+  </div>
+  <button type="submit">Save</button>
+</form>
+{{outlet}}
