@@ -1,9 +1,16 @@
-<ul>
+<div class="cards">
   {{#each model as |project|}}
-    <li>
-      <strong>{{project.name}}</strong>
+  <div class="card">
+    <div class="card-image">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
+    </div>
+    <div class="card-header">
+      {{project.name}}
+    </div>
+    <div class="card-copy">
       <p>{{project.description}}</p>
-    </li>
-    {{/each}}
-</ul>
+    </div>
+  </div>
+  {{/each}}
+</div>
 {{outlet}}

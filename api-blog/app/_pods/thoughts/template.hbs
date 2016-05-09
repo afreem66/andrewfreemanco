@@ -1,12 +1,25 @@
 <h2>This is what is on my mind. 140 characters and over</h2>
-<h4>{{link-to 'new' 'thoughts.new'}}</h4>
-<ul>
-  {{#each model as |thought|}}
-    <li>
-      <h4>{{thought.title}} by {{thought.author}}</h4>
-      <p>{{thought.body}}</p>
-      <span>written on {{thought.date}}</span>
-    </li>
-    {{/each}}
-</ul>
+<div class="scroll-on-page">
+  <aside id="scroll-on-page-top">
+    <a class="scroll-on-page-link" href="#scroll-link-1">First Scroll Link</a>
+    <a class="scroll-on-page-link" href="#scroll-link-2">Second Link</a>
+    <a class="scroll-on-page-link" href="#scroll-link-3">Last Link</a>
+  </aside>
+
+  <article>
+    {{#each model as |thought|}}
+      <section>
+        <h4 id="scroll-link-1">{{thought.title}}</h4>
+        <p>{{thought.body}}</p>
+        <ul>
+          {{#each model.tags as |tag|}}
+            <li>{{tag.name}}</li>
+          {{/each}}
+        </ul>
+        <span>{{thought.date}}</span>
+      </section>
+      {{/each}}
+  </article>
+</div>
+
 {{outlet}}
