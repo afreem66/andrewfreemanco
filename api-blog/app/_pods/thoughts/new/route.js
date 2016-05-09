@@ -6,7 +6,13 @@ export default Ember.Route.extend({
   },
   actions: {
     create() {
-      this.get('model').save().then(console.log("andrew"));
+      let model = this.get('currentModel');
+      if(model.get('isError')){
+        return false;
+      } else{
+        model.save().then(this.transitionTo('thoughts'));
+        console.log("saved succcessfully");
+      }
     }
   }
 });
