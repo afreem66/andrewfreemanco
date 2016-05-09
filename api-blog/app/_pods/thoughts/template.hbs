@@ -1,0 +1,12 @@
+<h2>This is what is on my mind. 140 characters and over</h2>
+<h4>{{link-to 'new' 'thoughts.new'}}</h4>
+<ul>
+  {{#each model as |thought|}}
+    <li>
+      <h4>{{thought.title}} by {{thought.author}}</h4>
+      <p>{{thought.body}}</p>
+      <span>written on {{thought.date}}</span>
+    </li>
+    {{/each}}
+</ul>
+{{outlet}}

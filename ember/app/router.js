@@ -10,7 +10,10 @@ Router.map(function() {
   this.route('projects', {path: '/work'}, function() {
     this.route('show', {path: '/:project_id'});
   });
-  this.route('thoughts');
+  this.route('thoughts', function() {
+    this.route('show', {path: '/:thought_id'});
+    this.route('new');
+  });
 });
 
 export default Router;
